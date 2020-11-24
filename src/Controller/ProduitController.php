@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +14,23 @@ class ProduitController extends AbstractController
      */
     public function index(): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Produit::class);
+        $produits = $repo->findAll();
+        //dd($produits);
+
         return $this->render('produit/index.html.twig', [
             'controller_name' => 'ProduitController',
+            "produits" => $produits
         ]);
+    }
+
+    /**
+     * @Route("/", name="home")
+     *
+     */
+    public function home()
+    {
+        return $this->render('produit/home.html.twig');
     }
 
     /**
@@ -24,7 +39,13 @@ class ProduitController extends AbstractController
      */
     public function nouvelleRoute()
     {
-        return $this->render('produit/nouvelle.html.twig');
+        $age = 34;
+        $prenom = "Jacky";
+        return $this->render('produit/nouvelle.html.twig', [
+            "monage" => $age,
+            "monprenom" => $prenom
+
+        ]);
     }
 
     /**
@@ -34,5 +55,13 @@ class ProduitController extends AbstractController
     public function createRoute()
     {
         return $this->render('produit/create.html.twig');
+    }
+    /**
+     * @Route("/produit/1", name="affiche_route")
+     *
+     */
+    public function affichage()
+    {
+        return $this->render('produit/affiche.html.twig');
     }
 }

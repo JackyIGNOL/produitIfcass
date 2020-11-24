@@ -4,6 +4,18 @@
 
 {% block body %}
 <div>
-    <h1>Nouvelle</h1>
+    <h1>Mon prenom est {{monprenom}}.</h1>
+    <h2>Mon age est {{monage}} ans.</h2>
+    {% if monage > 17 %}
+        <h2>Vous êtes majeur.</h2>
+    {% else %}
+        <h2>Vous êtes mineur.</h2>
+    {% endif %}
+
+
 </div>
-{% endblock %}
+
+
+
+
+{% endblock body %}

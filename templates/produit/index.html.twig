@@ -3,7 +3,61 @@
 {% block title %}Produits Page{% endblock %}
 
 {% block body %}
-<div>
-    <p><h1></h1> Mes produits</p>
+{% for produit in produits %}
+    <div class="produit">
+    <h1>{{produit.nom}}</h1>
+    <p>{{produit.dateDeCreation|date("m/d/Y")}}</p> 
+    <img src="{{produit.image}}" alt="">
+    <p>Le prix est {{produit.prix}}</p>
+    <p>Description : {{produit.description}}</p>
+    <a href=""><button class="btn btn-success">Plus d'info</button></a>
+
+    </div>
+{% endfor %}
+
+
+{# <div class="produit">
+    <h1>Mes produits</h1>
+    <img src="http://placehold.it/450x150" alt="">
+    <p>Date de création 12/20/2020</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Architecto earum dolores quo sapiente dolore dolorem neque nobis? 
+    Blanditiis pariatur doloremque maiores dicta deserunt veritatis 
+    consequuntur nobis aliquam, ipsam ab distinctio.
+    </p>
+    <a href=""><button class="btn btn-success">Description</button></a>
 </div>
+<div class="produit">
+    <h1>Mes produits</h1>
+    <img src="http://placehold.it/450x150" alt="">
+    <p>Date de création 12/20/2020</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Architecto earum dolores quo sapiente dolore dolorem neque nobis? 
+    Blanditiis pariatur doloremque maiores dicta deserunt veritatis 
+    consequuntur nobis aliquam, ipsam ab distinctio.
+    </p>
+    <a href=""><button class="btn btn-success">Description</button></a>
+</div>
+<div class="produit">
+    <h1>Mes produits</h1>
+    <img src="http://placehold.it/450x150" alt="">
+    <p>Date de création 12/20/2020</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Architecto earum dolores quo sapiente dolore dolorem neque nobis? 
+    Blanditiis pariatur doloremque maiores dicta deserunt veritatis 
+    consequuntur nobis aliquam, ipsam ab distinctio.
+    </p>
+    <a href=""><button class="btn btn-success">Description</button></a>
+</div>
+<div class="produit">
+    <h1>Mes produits</h1>
+    <img src="http://placehold.it/450x150" alt="">
+    <p>Date de création 12/20/2020</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Architecto earum dolores quo sapiente dolore dolorem neque nobis? 
+    Blanditiis pariatur doloremque maiores dicta deserunt veritatis 
+    consequuntur nobis aliquam, ipsam ab distinctio.
+    </p>
+    <a href=""><button class="btn btn-success">Description</button></a>
+</div> #}
 {% endblock %}
