@@ -17,4 +17,22 @@ class ProduitController extends AbstractController
             'controller_name' => 'ProduitController',
         ]);
     }
+
+    /**
+     * @Route("/produit/nouvelle", name="nouvelle_route")
+     *
+     */
+    public function nouvelleRoute()
+    {
+        return $this->render('produit/nouvelle.html.twig');
+    }
+
+    /**
+     * @Route("/produit/create", name="create_route")
+     *
+     */
+    public function createRoute()
+    {
+        return $this->render('produit/create.html.twig');
+    }
 }
