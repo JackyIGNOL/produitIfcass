@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Create
+{% endblock %}
+
+{% block body %}
+	<div class="produit">
+		<h1>{{produit.nom}}</h1>
+		<h4>{{produit.dateDeCreation|date("m/d/Y")}}</h4>
+		<img src="{{produit.image}}" alt="">
+		<h4>
+			Description du produit :
+			{{produit.description}}
+		</h4>
+		<h4>
+			Le prix est
+			{{produit.prix}}
+		</h4>
+	</div>
+{% endblock body %}

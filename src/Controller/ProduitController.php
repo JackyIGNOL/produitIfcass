@@ -34,7 +34,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/produit/nouvelle", name="nouvelle_route")
+     * @Route("/produit/nouvelle", name="nouvelle")
      *
      */
     public function nouvelleRoute()
@@ -49,7 +49,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/produit/create", name="create_route")
+     * @Route("/produit/create", name="create")
      *
      */
     public function createRoute()
@@ -57,11 +57,15 @@ class ProduitController extends AbstractController
         return $this->render('produit/create.html.twig');
     }
     /**
-     * @Route("/produit/1", name="affiche_route")
+     * @Route("/produit/{id}", name="affiche_produit")
      *
      */
-    public function affichage()
+    public function affichage($id)
     {
-        return $this->render('produit/affiche.html.twig');
+        $repository = $this->getDoctrine()->getRepository(Produit::class);
+        $produit = $repository->find($id);
+        return $this->render('produit/affiche.html.twig', [
+            "produit" => $produit
+        ]);
     }
 }
