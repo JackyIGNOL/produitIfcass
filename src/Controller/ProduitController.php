@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Form\ProduitType;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProduitController extends AbstractController
@@ -56,6 +60,26 @@ class ProduitController extends AbstractController
     {
         return $this->render('produit/create.html.twig');
     }
+
+    /**
+     * @Route("/produit/createForm", name="createForm")
+     *
+     */
+    public function createFormulaire(Request $request, ObjectManager $manager)
+    {
+        $produit = new Produit();
+        $form = $this->createForm(ProduitType::class, $produit);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($produit);
+            $manager->flush();
+            return $this->redirectToRoute('affiche_produit', ['id' => $produit->getId()]);
+        }
+        return $this->render('produit/create.html.twig', [
+            "formulaire" => $form->createView()
+        ]);
+    }
+
     /**
      * @Route("/produit/{id}", name="affiche_produit")
      *
